@@ -7,7 +7,9 @@ extends Node2D
 @onready var distance_label = $Distance
 @onready var boost_progress_bar = $BoostProgressBar
 @onready var enemy_timer = $EnemyTimer
+
 const speed_multiplicator = 20
+const max_speed = 1600
 var is_finished = false
 
 const race_length = 80000
@@ -48,7 +50,7 @@ func _process(delta):
 	if (is_finished):
 		vertical_speed = 0
 	else:
-		vertical_speed = vertical_speed + delta * speed_multiplicator
+		vertical_speed = min(vertical_speed + delta * speed_multiplicator, max_speed)
 		if Input.is_action_pressed("boost"):
 			boost()
 
