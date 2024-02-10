@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdeub1sx05uh4"]
+[gd_scene load_steps=7 format=3 uid="uid://cdeub1sx05uh4"]
 
 [ext_resource type="Texture2D" uid="uid://debjsgns52ni1" path="res://resources/assets/obsticals/Illustration_sans_titre 5.png" id="1_v2b72"]
 [ext_resource type="Script" path="res://actors/enemy.gd" id="1_wg2h5"]
+[ext_resource type="Texture2D" uid="uid://dyr0swbppkd5a" path="res://resources/assets/obsticals/Illustration_sans_titre 7.png" id="3_volpj"]
+[ext_resource type="Texture2D" uid="uid://bufwetrbtisf7" path="res://resources/assets/obsticals/Illustration_sans_titre 6.png" id="4_fvxvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n44tn"]
 
@@ -12,7 +14,23 @@ animations = [{
 "texture": ExtResource("1_v2b72")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"asteroid1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_volpj")
+}],
+"loop": true,
+"name": &"asteroid2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fvxvu")
+}],
+"loop": true,
+"name": &"asteroid3",
 "speed": 5.0
 }]
 
@@ -25,9 +43,9 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_n44tn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 rotation = 0.261799
 sprite_frames = SubResource("SpriteFrames_sbn1m")
-animation = &"new_animation"
-frame_progress = 0.7971
+animation = &"asteroid2"
 
 [connection signal="body_entered" from="." to="." method="_on_collision_polygon_2d_body_entered"]

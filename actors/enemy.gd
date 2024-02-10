@@ -5,10 +5,11 @@ var speed_coef
 const side_movement = 0.4
 
 var velocity = Vector2.ZERO
+@onready var animated_sprite = %AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	
+	animated_sprite.animation = "asteroid" + str(randi_range(1,3))
 	rotation = randf() * PI
 	var scale_ratio = randf_range(0.5, 4)
 	scale = Vector2(scale_ratio, scale_ratio)
