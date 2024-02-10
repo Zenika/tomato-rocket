@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=7 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
@@ -6,8 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
 
+[sub_resource type="Curve2D" id="Curve2D_xe6ri"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 5, 0, 0, 0, 0, 1919, 3, 0, 0, 0, 0, 1919, 128, 0, 0, 0, 0, 1, 131, 0, 0, 0, 0, 2, 9, 0, 0, 0, 0, 1, 5)
+}
+point_count = 6
+
 [node name="RaceScreen" type="Node2D"]
 script = ExtResource("1_lc0uc")
+enemy_scene = ExtResource("5_6srgp")
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(960, 960)
@@ -19,9 +26,19 @@ position = Vector2(960, 960)
 [node name="FinishLine" parent="." instance=ExtResource("3_qg17w")]
 position = Vector2(0, -21)
 
-[node name="Enemy" parent="." instance=ExtResource("5_6srgp")]
-position = Vector2(100, 100)
-
 [node name="DistanceText" type="RichTextLabel" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="EnemyAreaPath" type="Path2D" parent="."]
+position = Vector2(15, -203)
+curve = SubResource("Curve2D_xe6ri")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyAreaPath"]
+position = Vector2(1, 5)
+rotation = -0.00104275
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
