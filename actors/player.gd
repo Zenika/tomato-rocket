@@ -5,6 +5,8 @@ var lateral_speed = 800
 var screen_size
 @onready var flames_animation = $FlamesAnimation
 
+const turning_constante = PI/8
+
 func start(pos):
 	position = pos
 	
@@ -16,8 +18,12 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
+		rotation = turning_constante
+	elif Input.is_action_pressed("move_left"):
 		velocity.x -= 1
+		rotation = -turning_constante
+	else:
+		rotation = 0
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * lateral_speed
