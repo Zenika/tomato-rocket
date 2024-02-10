@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=5 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://player.tscn" id="2_ig1mj"]
-[ext_resource type="PackedScene" uid="uid://b1sq3m0ltteyp" path="res://background.tscn" id="3_ounkw"]
+[ext_resource type="PackedScene" uid="uid://cfj6xv2xongn0" path="res://background.tscn" id="3_ounkw"]
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://finish_line.tscn" id="3_qg17w"]
 
 [node name="RaceScreen" type="Node2D"]
@@ -14,4 +14,5 @@ position = Vector2(960, 960)
 [node name="Player" parent="." instance=ExtResource("2_ig1mj")]
 
 [node name="Background" parent="." instance=ExtResource("3_ounkw")]
+
 [node name="FinishLine" parent="." instance=ExtResource("3_qg17w")]

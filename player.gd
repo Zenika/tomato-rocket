@@ -1,17 +1,14 @@
-extends Area2D
+extends StaticBody2D
 
+class_name Player
 var lateral_speed = 400
-@export var vertical_speed = 1
 var screen_size
-
-const speed_multiplicator = 5
 
 func start(pos):
 	position = pos
 	
 func _ready():
 	screen_size = get_viewport_rect().size
-
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -28,5 +25,3 @@ func _process(delta):
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	
-	vertical_speed = vertical_speed + delta * speed_multiplicator 

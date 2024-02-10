@@ -1,6 +1,6 @@
 extends Area2D
 
-var vertical_speed = 1
+var vertical_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +18,7 @@ func _process(delta):
 	
 func set_vertical_speed(speed):
 	vertical_speed = speed
+
+func _on_collision_polygon_2d_body_entered(body):
+	if body is Player:
+		get_parent().vertical_speed = 0
