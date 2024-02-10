@@ -7,6 +7,7 @@ extends Node2D
 @onready var distance_label = $Distance
 @onready var boost_progress_bar = $BoostProgressBar
 @onready var enemy_timer = $EnemyTimer
+@onready var boost_duration_timer = $BoostDurationTimer
 
 const speed_multiplicator = 20
 const max_speed = 1600
@@ -22,6 +23,9 @@ var health = 100
 var is_boost_enabled = false
 
 const distance_between_asteroids = 250
+
+var is_boosting = false
+var last_speed_before_boost = 0
 
 func _ready():
 	new_game()
@@ -50,7 +54,8 @@ func _process(delta):
 	if (is_finished):
 		vertical_speed = 0
 	else:
-		vertical_speed = min(vertical_speed + delta * speed_multiplicator, max_speed)
+		if !is_boosting:
+			vertical_speed = min(vertical_speed + delta * speed_multiplicator, max_speed)
 		if Input.is_action_pressed("boost"):
 			boost()
 
@@ -76,7 +81,10 @@ func _on_enemy_timer_timeout():
 func boost():
 	if is_boost_enabled:
 		reset_boost()
-		vertical_speed += 200
+		boost_duration_timer.start()
+		last_speed_before_boost = vertical_speed
+		is_boosting = true
+		vertical_speed = max_speed * 2
 
 func _on_boost_timer_timeout():
 	var jerrycan = boost_scene.instantiate()
@@ -94,3 +102,8 @@ func finish_game():
 func reset_boost():
 	boost_progress_bar.value = 0
 	is_boost_enabled = false
+
+func _on_boost_duration_timer_timeout():
+	vertical_speed = last_speed_before_boost
+	is_boosting = false
+
