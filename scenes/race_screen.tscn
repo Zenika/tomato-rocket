@@ -26,9 +26,11 @@ position = Vector2(960, 960)
 [node name="FinishLine" parent="." instance=ExtResource("3_qg17w")]
 position = Vector2(0, -21)
 
-[node name="DistanceText" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Health" type="RichTextLabel" parent="."]
+offset_left = 1813.0
+offset_top = 7.0
+offset_right = 1911.0
+offset_bottom = 47.0
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.52
