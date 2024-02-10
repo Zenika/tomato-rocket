@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://boorheqgs8kja"]
 
-[ext_resource type="Script" path="res://finish_line.gd" id="1_204nq"]
+[ext_resource type="Script" path="res://actors/finish_line.gd" id="1_204nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45g03"]
 

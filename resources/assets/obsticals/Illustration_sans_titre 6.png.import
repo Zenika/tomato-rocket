@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btvevvxemqulu"
-path="res://.godot/imported/jelly-2.png-1383c1e08d0b365be2220d259cff445f.ctex"
+uid="uid://bufwetrbtisf7"
+path="res://.godot/imported/Illustration_sans_titre 6.png-a78ccbe5b4297788ccb2773d41cd1d68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ships/jelly-2.png"
-dest_files=["res://.godot/imported/jelly-2.png-1383c1e08d0b365be2220d259cff445f.ctex"]
+source_file="res://resources/assets/obsticals/Illustration_sans_titre 6.png"
+dest_files=["res://.godot/imported/Illustration_sans_titre 6.png-a78ccbe5b4297788ccb2773d41cd1d68.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bufwetrbtisf7"
-path="res://.godot/imported/Illustration_sans_titre 6.png-66aff74b90b53768f3f294a01b6d5a79.ctex"
+uid="uid://brvsilyrwab7"
+path="res://.godot/imported/Pixel Space Background.png-d44ffc4a160c3e2e39370e67976b8fe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obsticals/Illustration_sans_titre 6.png"
-dest_files=["res://.godot/imported/Illustration_sans_titre 6.png-66aff74b90b53768f3f294a01b6d5a79.ctex"]
+source_file="res://resources/assets/background/Pixel Space Background.png"
+dest_files=["res://.godot/imported/Pixel Space Background.png-d44ffc4a160c3e2e39370e67976b8fe7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyr0swbppkd5a"
-path="res://.godot/imported/Illustration_sans_titre 7.png-6cdb5a2d4725d17e779bd855661112d3.ctex"
+uid="uid://do5cirxbaysib"
+path="res://.godot/imported/tintin_rocket.png-c63e799659dba97e950c0b90311c95b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/obsticals/Illustration_sans_titre 7.png"
-dest_files=["res://.godot/imported/Illustration_sans_titre 7.png-6cdb5a2d4725d17e779bd855661112d3.ctex"]
+source_file="res://resources/assets/ships/tintin_rocket.png"
+dest_files=["res://.godot/imported/tintin_rocket.png-c63e799659dba97e950c0b90311c95b5.ctex"]
 
 [params]
 

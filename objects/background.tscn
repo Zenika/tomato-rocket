@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfj6xv2xongn0"]
 
-[ext_resource type="Script" path="res://background.gd" id="1_xo8cy"]
-[ext_resource type="Texture2D" uid="uid://brvsilyrwab7" path="res://assets/background/Pixel Space Background.png" id="2_afux0"]
+[ext_resource type="Script" path="res://objects/background.gd" id="1_xo8cy"]
+[ext_resource type="Texture2D" uid="uid://brvsilyrwab7" path="res://resources/assets/background/Pixel Space Background.png" id="2_afux0"]
 
 [node name="Background" type="ParallaxBackground"]
 script = ExtResource("1_xo8cy")

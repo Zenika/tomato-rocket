@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fb7lgsjcaht6"
-path="res://.godot/imported/jelly.png-d008ee27663cad166db6e360fa01b4b0.ctex"
+path="res://.godot/imported/jelly.png-80ea5ac873a1827d4c9892349696b881.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ships/jelly.png"
-dest_files=["res://.godot/imported/jelly.png-d008ee27663cad166db6e360fa01b4b0.ctex"]
+source_file="res://resources/assets/ships/jelly.png"
+dest_files=["res://.godot/imported/jelly.png-80ea5ac873a1827d4c9892349696b881.ctex"]
 
 [params]
 

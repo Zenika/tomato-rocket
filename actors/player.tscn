@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djfsmn2nrjiuu"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_je0pj"]
-[ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://assets/ships/tintin_rocket.png" id="2_qx22x"]
+[ext_resource type="Script" path="res://actors/player.gd" id="1_je0pj"]
+[ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="2_qx22x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivgua"]
 radius = 17.0

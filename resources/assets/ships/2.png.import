@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do5cirxbaysib"
-path="res://.godot/imported/tintin_rocket.png-12252a5f7cca450016ede56b3b8ad591.ctex"
+uid="uid://cyk3ndrqlkdk3"
+path="res://.godot/imported/2.png-1fbcee689e8997ad25ae572cc25edf06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ships/tintin_rocket.png"
-dest_files=["res://.godot/imported/tintin_rocket.png-12252a5f7cca450016ede56b3b8ad591.ctex"]
+source_file="res://resources/assets/ships/2.png"
+dest_files=["res://.godot/imported/2.png-1fbcee689e8997ad25ae572cc25edf06.ctex"]
 
 [params]
 
