@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://djfsmn2nrjiuu"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_je0pj"]
+[ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://assets/ships/tintin_rocket.png" id="2_qx22x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mlpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qx22x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivgua"]
+radius = 17.0
+height = 34.0
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_je0pj")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2mlpe")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ivgua")
