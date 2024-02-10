@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=9 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
 [ext_resource type="PackedScene" uid="uid://cfj6xv2xongn0" path="res://objects/background.tscn" id="3_ounkw"]
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
+[ext_resource type="PackedScene" uid="uid://mltrbsla6lvm" path="res://actors/boost.tscn" id="6_ife0x"]
 
 [sub_resource type="Curve2D" id="Curve2D_xe6ri"]
 _data = {
@@ -12,9 +13,16 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve2D" id="Curve2D_k1rs0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3, -114, 0, 0, 0, 0, 1, -302, 0, 0, 0, 0, 1926, -282, 0, 0, 0, 0, 1926, -110, 0, 0, 0, 0, 7, -111, 0, 0, 0, 0, 3, -114)
+}
+point_count = 6
+
 [node name="RaceScreen" type="Node2D"]
 script = ExtResource("1_lc0uc")
 enemy_scene = ExtResource("5_6srgp")
+boost_scene = ExtResource("6_ife0x")
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(960, 960)
@@ -38,6 +46,14 @@ offset_top = 15.0
 offset_right = 416.0
 offset_bottom = 55.0
 
+[node name="BoostProgressBar" type="ProgressBar" parent="."]
+offset_left = 887.0
+offset_top = 18.0
+offset_right = 1062.0
+offset_bottom = 45.0
+step = 1.0
+show_percentage = false
+
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.52
 
@@ -49,4 +65,15 @@ curve = SubResource("Curve2D_xe6ri")
 position = Vector2(1, 5)
 rotation = -0.00104275
 
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="BoostPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_k1rs0")
+
+[node name="BoostSpawnLocation" type="PathFollow2D" parent="BoostPath"]
+position = Vector2(3, -114)
+rotation = -1.58143
+
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]

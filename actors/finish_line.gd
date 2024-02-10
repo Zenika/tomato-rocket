@@ -21,5 +21,4 @@ func set_vertical_speed(speed):
 
 func _on_collision_polygon_2d_body_entered(body):
 	if body is Player:
-		get_parent().vertical_speed = 0
-		get_parent().finish_game()
+		get_parent().win_game()

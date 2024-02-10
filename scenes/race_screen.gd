@@ -1,42 +1,53 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
-@export var finish_line_scene: PackedScene
+@export var boost_scene: PackedScene
 @export var vertical_speed = 200
-
 @onready var health_label = $Health
 @onready var distance_label = $Distance
+@onready var boost_progress_bar = $BoostProgressBar
 const speed_multiplicator = 20
 var is_finished = false
 
-const race_length = 20000
+const race_length = 80000
 var traveled_distance = 0
 
 const window_height = 950
 const window_width = 1920
-var health = 100
 
-func new_game():
-	$EnemyTimer.start()
-	$Player.start($PlayerPosition.position)
+var health = 100
+var is_boost_enabled = false
 
 func _ready():
+	new_game()
+	
+func new_game():
 	health_label.text = str(health)
 	distance_label.text = str(traveled_distance) + '/' + str(race_length)
-	new_game()
+	boost_progress_bar.value = 0
+	
+	$EnemyTimer.start()
+	$BoostTimer.start()
+	$Player.start($PlayerPosition.position)
 	
 func hurt_player():
 	health -= 10
 	health_label.text = str(health)
-	vertical_speed /= 2;
+	vertical_speed /= 2
 	if health <= 0:
 		finish_game()
+		
+func fill_boost():
+	boost_progress_bar.value += 25
+	is_boost_enabled = boost_progress_bar.value >= 100
 
 func _process(delta):
 	if (is_finished):
 		vertical_speed = 0
 	else:
 		vertical_speed = vertical_speed + delta * speed_multiplicator
+		if Input.is_action_pressed("boost"):
+			boost()
 
 	$Background.set_vertical_speed(vertical_speed)
 	traveled_distance += vertical_speed * delta
@@ -44,15 +55,31 @@ func _process(delta):
 		$FinishLine.set_process(true)
 		$FinishLine.set_vertical_speed(vertical_speed)
 	
-	distance_label.text = str(int(traveled_distance)) + ' / ' + str(race_length)	
+	distance_label.text = str(int(traveled_distance)) + ' / ' + str(race_length)
 	
-func finish_game():
-	is_finished = true
-	$Player.stop($PlayerPosition.position)
-
-
 func _on_enemy_timer_timeout():
 	var enemy = enemy_scene.instantiate()
 	enemy.position = Vector2(window_width * randf(), -100)
 	add_child(enemy)
-	#enemy.set_vertical_speed(vertical_speed)
+	
+func boost():
+	if is_boost_enabled:
+		reset_boost()
+		vertical_speed += 200
+
+func _on_boost_timer_timeout():
+	var jerrycan = boost_scene.instantiate()
+	jerrycan.position = Vector2(window_width * randf(), -100)
+	add_child(jerrycan)
+	
+func win_game():
+	vertical_speed = 0
+	finish_game()
+	
+func finish_game():
+	is_finished = true
+	$Player.stop($PlayerPosition.position)
+	
+func reset_boost():
+	boost_progress_bar.value = 0
+	is_boost_enabled = false

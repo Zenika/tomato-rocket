@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://mltrbsla6lvm"]
+
+[ext_resource type="Script" path="res://actors/boost.gd" id="1_thv4r"]
+[ext_resource type="Texture2D" uid="uid://c21cxwyqp4imf" path="res://resources/assets/boost/boost.png" id="2_eyvq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enolf"]
+size = Vector2(9.57792, 14.6104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_facgh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eyvq4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Boost" type="Area2D"]
+scale = Vector2(3.08, 3.08)
+script = ExtResource("1_thv4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.162338, -0.324674)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_enolf")
+
+[node name="BoostSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3.57143, -0.649351)
+sprite_frames = SubResource("SpriteFrames_facgh")
+animation = &"idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(-1.13636, -0.487013)
+scale = Vector2(2.90584, 2.97078)
+
+[connection signal="body_entered" from="." to="." method="_on_collision_polygon_2d_body_entered"]
+[connection signal="tree_exited" from="BoostSprite2D" to="." method="_on_animated_sprite_2d_tree_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
