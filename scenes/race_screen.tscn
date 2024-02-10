@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfj6xv2xongn0" path="res://objects/background.tscn" id="3_ounkw"]
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
-[ext_resource type="PackedScene" uid="uid://mltrbsla6lvm" path="res://actors/boost.tscn" id="6_ife0x"]
+[ext_resource type="PackedScene" path="res://actors/boost.tscn" id="6_ife0x"]
 
 [sub_resource type="Curve2D" id="Curve2D_xe6ri"]
 _data = {

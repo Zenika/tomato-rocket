@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brvsilyrwab7"
-path="res://.godot/imported/Pixel Space Background.png-d44ffc4a160c3e2e39370e67976b8fe7.ctex"
+uid="uid://c8xk27p43is3a"
+path="res://.godot/imported/pixel_space_background.png-29a382ae45b7813565123fbbb9bd600a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/assets/background/Pixel Space Background.png"
-dest_files=["res://.godot/imported/Pixel Space Background.png-d44ffc4a160c3e2e39370e67976b8fe7.ctex"]
+source_file="res://resources/assets/background/pixel_space_background.png"
+dest_files=["res://.godot/imported/pixel_space_background.png-29a382ae45b7813565123fbbb9bd600a.ctex"]
 
 [params]
 
