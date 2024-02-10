@@ -21,10 +21,9 @@ func _ready():
 	if velocity.length() > 0:
 		velocity = velocity.normalized()
 	
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotation += 8 * delta
+	rotation += 4 * delta
 	vertical_speed = get_parent().vertical_speed
 	position += delta * velocity * vertical_speed
 	

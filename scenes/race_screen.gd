@@ -5,22 +5,24 @@ extends Node2D
 @export var vertical_speed = 200
 
 @onready var health_label = $Health
-const speed_multiplicator = 10
+@onready var distance_label = $Distance
+const speed_multiplicator = 20
 var is_finished = false
 
-const race_length = 100000
+const race_length = 20000
+var traveled_distance = 0
+
 const window_height = 950
 const window_width = 1920
-var traveled_distance = 0
 var health = 100
 
 func new_game():
 	$EnemyTimer.start()
 	$Player.start($PlayerPosition.position)
 
-
 func _ready():
 	health_label.text = str(health)
+	distance_label.text = str(traveled_distance) + '/' + str(race_length)
 	new_game()
 	
 func hurt_player():
@@ -42,9 +44,10 @@ func _process(delta):
 		$FinishLine.set_process(true)
 		$FinishLine.set_vertical_speed(vertical_speed)
 	
+	distance_label.text = str(int(traveled_distance)) + ' / ' + str(race_length)	
+	
 func finish_game():
 	is_finished = true
-	print(traveled_distance)
 	$Player.stop($PlayerPosition.position)
 
 

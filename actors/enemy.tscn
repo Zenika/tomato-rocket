@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bufwetrbtisf7" path="res://resources/assets/obsticals/Illustration_sans_titre 6.png" id="4_fvxvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n44tn"]
+radius = 12.0229
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sbn1m"]
 animations = [{
@@ -44,11 +45,15 @@ shape = SubResource("CircleShape2D_n44tn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0.974026, -0.324675)
 rotation = 0.261799
 sprite_frames = SubResource("SpriteFrames_sbn1m")
-animation = &"asteroid2"
+animation = &"asteroid3"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(-1.13636, -0.487013)
+scale = Vector2(2.90584, 2.97078)
 
 [connection signal="body_entered" from="." to="." method="_on_collision_polygon_2d_body_entered"]
 [connection signal="tree_exited" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_tree_exited"]

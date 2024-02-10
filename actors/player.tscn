@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="2_qx22x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivgua"]
-radius = 17.0
-height = 34.0
+radius = 18.0
+height = 124.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2mlpe"]
 animations = [{
