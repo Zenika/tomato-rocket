@@ -28,3 +28,5 @@ rotation = 0.261799
 sprite_frames = SubResource("SpriteFrames_sbn1m")
 animation = &"new_animation"
 frame_progress = 0.7971
+
+[connection signal="body_entered" from="." to="." method="_on_collision_polygon_2d_body_entered"]

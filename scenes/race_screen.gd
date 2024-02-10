@@ -22,7 +22,7 @@ func _process(delta):
 		vertical_speed = 0
 	else:
 		vertical_speed = vertical_speed + delta * speed_multiplicator
-		
+	$Enemy.set_vertical_speed(vertical_speed)
 	$Background.set_vertical_speed(vertical_speed)
 	traveled_distance += vertical_speed * delta
 	if (traveled_distance > race_length - window_height):

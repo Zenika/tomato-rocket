@@ -21,3 +21,7 @@ position = Vector2(0, -21)
 
 [node name="Enemy" parent="." instance=ExtResource("5_6srgp")]
 position = Vector2(100, 100)
+
+[node name="DistanceText" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
