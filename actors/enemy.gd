@@ -33,6 +33,7 @@ func set_vertical_speed(speed):
 func _on_collision_polygon_2d_body_entered(body):
 	if body is Player:
 		get_parent().hurt_player()
+		queue_free()
 		
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

@@ -25,7 +25,7 @@ const window_width = 1920
 var health = 100
 var is_boost_enabled = false
 
-const distance_between_asteroids = 250
+const distance_between_asteroids = 250.0
 
 var is_boosting = false
 var last_speed_before_boost = 0
@@ -74,7 +74,7 @@ func _process(delta):
 	
 	# Augmenter la fréquence des astéroides en fonction de la vitesse
 	if vertical_speed != 0:
-		enemy_timer.wait_time = distance_between_asteroids / vertical_speed
+		enemy_timer.wait_time = max(distance_between_asteroids / vertical_speed, 0.45)
 	else:
 		enemy_timer.stop()
 	
