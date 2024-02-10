@@ -8,6 +8,9 @@ extends Node2D
 @onready var boost_progress_bar = $BoostProgressBar
 @onready var enemy_timer = $EnemyTimer
 @onready var boost_duration_timer = $BoostDurationTimer
+@onready var pickup_boost_sound = $PickupBoostSound
+@onready var boost_activation_sound = $BoostActivationSound
+@onready var hit_asteroid_sound = $HitAsteroidSound
 
 const speed_multiplicator = 20
 const max_speed = 1600
@@ -43,10 +46,12 @@ func hurt_player():
 	health -= 10
 	health_label.text = str(health)
 	vertical_speed /= 2
+	hit_asteroid_sound.play()
 	if health <= 0:
 		finish_game()
 		
 func fill_boost():
+	pickup_boost_sound.play()
 	boost_progress_bar.value += 25
 	is_boost_enabled = boost_progress_bar.value >= 100
 
@@ -81,6 +86,7 @@ func _on_enemy_timer_timeout():
 func boost():
 	if is_boost_enabled:
 		reset_boost()
+		boost_activation_sound.play()
 		boost_duration_timer.start()
 		last_speed_before_boost = vertical_speed
 		is_boosting = true
@@ -106,4 +112,3 @@ func reset_boost():
 func _on_boost_duration_timer_timeout():
 	vertical_speed = last_speed_before_boost
 	is_boosting = false
-

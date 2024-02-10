@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=12 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
 [ext_resource type="PackedScene" path="res://actors/boost.tscn" id="6_ife0x"]
+[ext_resource type="AudioStream" uid="uid://dx324yaxvgura" path="res://resources/sounds/boost.wav" id="7_wwbun"]
+[ext_resource type="AudioStream" uid="uid://dvtu3v6cgm8ce" path="res://resources/sounds/boost2.wav" id="8_rupqm"]
+[ext_resource type="AudioStream" uid="uid://cxw0t2m5wkrgu" path="res://resources/sounds/hit.wav" id="9_xbv6c"]
 
 [sub_resource type="Curve2D" id="Curve2D_xe6ri"]
 _data = {
@@ -58,7 +61,8 @@ show_percentage = false
 wait_time = 0.52
 
 [node name="EnemyAreaPath" type="Path2D" parent="."]
-position = Vector2(15, -203)
+position = Vector2(151.17, -203)
+scale = Vector2(0.830031, 1)
 curve = SubResource("Curve2D_xe6ri")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyAreaPath"]
@@ -69,6 +73,8 @@ rotation = -0.00104275
 wait_time = 5.0
 
 [node name="BoostPath" type="Path2D" parent="."]
+position = Vector2(351.41, 0)
+scale = Vector2(0.59013, 1)
 curve = SubResource("Curve2D_k1rs0")
 
 [node name="BoostSpawnLocation" type="PathFollow2D" parent="BoostPath"]
@@ -78,6 +84,15 @@ rotation = -1.58143
 [node name="BoostDurationTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="PickupBoostSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_wwbun")
+
+[node name="BoostActivationSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_rupqm")
+
+[node name="HitAsteroidSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_xbv6c")
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
