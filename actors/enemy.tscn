@@ -48,4 +48,8 @@ rotation = 0.261799
 sprite_frames = SubResource("SpriteFrames_sbn1m")
 animation = &"asteroid2"
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_collision_polygon_2d_body_entered"]
+[connection signal="tree_exited" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_tree_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

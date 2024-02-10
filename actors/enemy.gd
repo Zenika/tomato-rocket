@@ -7,9 +7,8 @@ const side_movement = 0.4
 var velocity = Vector2.ZERO
 @onready var animated_sprite = %AnimatedSprite2D
 
-
 func _ready():
-	animated_sprite.animation = "asteroid" + str(randi_range(1,3))
+	animated_sprite.animation = "asteroid" + str(randi_range(1, 3))
 	rotation = randf() * PI
 	var scale_ratio = randf_range(0.5, 4)
 	scale = Vector2(scale_ratio, scale_ratio)
@@ -25,6 +24,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	rotation += 8 * delta
 	vertical_speed = get_parent().vertical_speed
 	position += delta * velocity * vertical_speed
 	
@@ -35,3 +35,6 @@ func _on_collision_polygon_2d_body_entered(body):
 	if body is Player:
 		get_parent().vertical_speed = 0
 		get_parent().finish_game()
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()

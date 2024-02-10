@@ -31,7 +31,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.52
 
 [node name="EnemyAreaPath" type="Path2D" parent="."]
 position = Vector2(15, -203)

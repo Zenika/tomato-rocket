@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 class_name Player
-var lateral_speed = 400
+var lateral_speed = 800
 var screen_size
 
 func start(pos):

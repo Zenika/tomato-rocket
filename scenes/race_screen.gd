@@ -3,7 +3,7 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @export var finish_line_scene: PackedScene
 @export var vertical_speed = 200
-const speed_multiplicator = 50
+const speed_multiplicator = 10
 var is_finished = false
 
 const race_length = 100000
