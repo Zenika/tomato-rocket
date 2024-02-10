@@ -38,6 +38,6 @@ func finish_game():
 
 func _on_enemy_timer_timeout():
 	var enemy = enemy_scene.instantiate()
-	enemy.position = Vector2(window_width * randf(), 0)
+	enemy.position = Vector2(window_width * randf(), -100)
 	add_child(enemy)
-	enemy.set_vertical_speed(vertical_speed)
+	#enemy.set_vertical_speed(vertical_speed)

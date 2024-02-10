@@ -8,6 +8,7 @@ var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	rotation = randf() * PI
 	var scale_ratio = randf_range(0.5, 4)
 	scale = Vector2(scale_ratio, scale_ratio)
@@ -23,6 +24,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	vertical_speed = get_parent().vertical_speed
 	position += delta * velocity * vertical_speed
 	
 func set_vertical_speed(speed):
