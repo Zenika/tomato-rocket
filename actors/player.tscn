@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://djfsmn2nrjiuu"]
+[gd_scene load_steps=13 format=3 uid="uid://djfsmn2nrjiuu"]
 
 [ext_resource type="Script" path="res://actors/player.gd" id="1_je0pj"]
 [ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="2_qx22x"]
+[ext_resource type="Texture2D" uid="uid://dpwy6e46cn1ox" path="res://resources/assets/effects/thrust_0.png" id="3_f5kmt"]
+[ext_resource type="Texture2D" uid="uid://c31o76l8hlyfr" path="res://resources/assets/effects/thrust_1.png" id="4_cexvr"]
+[ext_resource type="Texture2D" uid="uid://djmbg3np52hd" path="res://resources/assets/effects/thrust_2.png" id="5_ww1i4"]
+[ext_resource type="Texture2D" uid="uid://bdqxeqoxjdqax" path="res://resources/assets/effects/thrust_3.png" id="6_bky5y"]
+[ext_resource type="Texture2D" uid="uid://c8xfyf7ab746b" path="res://resources/assets/effects/thrust_4.png" id="7_adyri"]
+[ext_resource type="Texture2D" uid="uid://b4hyvrxmmqcim" path="res://resources/assets/effects/thrust_5.png" id="8_emmw3"]
+[ext_resource type="Texture2D" uid="uid://yndansx0pyom" path="res://resources/assets/effects/thrust_6.png" id="9_yk6cc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivgua"]
 radius = 18.0
@@ -18,6 +25,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2tgf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f5kmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cexvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ww1i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bky5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_adyri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_emmw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yk6cc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_je0pj")
 
@@ -28,3 +64,10 @@ shape = SubResource("CapsuleShape2D_ivgua")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2mlpe")
 animation = &"idle"
+
+[node name="FlamesAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.08165e-12, 74)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_k2tgf")
+frame_progress = 0.338726
+speed_scale = 21.68

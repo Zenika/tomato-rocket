@@ -3,12 +3,14 @@ extends StaticBody2D
 class_name Player
 var lateral_speed = 800
 var screen_size
+@onready var flames_animation = $FlamesAnimation
 
 func start(pos):
 	position = pos
 	
 func _ready():
 	screen_size = get_viewport_rect().size
+	flames_animation.play()
 
 func _process(delta):
 	var velocity = Vector2.ZERO
