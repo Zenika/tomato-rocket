@@ -6,6 +6,7 @@ extends Node2D
 @onready var health_label = $Health
 @onready var distance_label = $Distance
 @onready var boost_progress_bar = $BoostProgressBar
+@onready var enemy_timer = $EnemyTimer
 const speed_multiplicator = 20
 var is_finished = false
 
@@ -17,6 +18,8 @@ const window_width = 1920
 
 var health = 100
 var is_boost_enabled = false
+
+const distance_between_asteroids = 250
 
 func _ready():
 	new_game()
@@ -56,6 +59,12 @@ func _process(delta):
 		$FinishLine.set_vertical_speed(vertical_speed)
 	
 	distance_label.text = str(int(traveled_distance)) + ' / ' + str(race_length)
+	
+	# Augmenter la fréquence des astéroides en fonction de la vitesse
+	if vertical_speed != 0:
+		enemy_timer.wait_time = distance_between_asteroids / vertical_speed
+	else:
+		enemy_timer.stop()
 	
 func _on_enemy_timer_timeout():
 	var enemy = enemy_scene.instantiate()
