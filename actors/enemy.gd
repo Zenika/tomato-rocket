@@ -10,7 +10,7 @@ var velocity = Vector2.ZERO
 func _ready():
 	animated_sprite.animation = "asteroid" + str(randi_range(1, 3))
 	rotation = randf() * PI
-	var scale_ratio = randf_range(0.5, 4)
+	var scale_ratio = randf_range(1, 4)
 	scale = Vector2(scale_ratio, scale_ratio)
 
 	speed_coef = randf()
