@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdeub1sx05uh4"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_2bkv7"]
+[ext_resource type="Texture2D" uid="uid://debjsgns52ni1" path="res://assets/obsticals/Illustration_sans_titre 5.png" id="1_v2b72"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n44tn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbn1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v2b72")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_2bkv7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_n44tn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.261799
+sprite_frames = SubResource("SpriteFrames_sbn1m")
+animation = &"new_animation"
+frame_progress = 0.7971

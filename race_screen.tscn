@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=6 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://player.tscn" id="2_ig1mj"]
 [ext_resource type="PackedScene" uid="uid://cfj6xv2xongn0" path="res://background.tscn" id="3_ounkw"]
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://finish_line.tscn" id="3_qg17w"]
+[ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://enemy.tscn" id="5_6srgp"]
 
 [node name="RaceScreen" type="Node2D"]
 script = ExtResource("1_lc0uc")
@@ -17,3 +18,6 @@ position = Vector2(960, 960)
 
 [node name="FinishLine" parent="." instance=ExtResource("3_qg17w")]
 position = Vector2(0, -21)
+
+[node name="Enemy" parent="." instance=ExtResource("5_6srgp")]
+position = Vector2(100, 100)
