@@ -1,16 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=17 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
 [ext_resource type="PackedScene" uid="uid://cfj6xv2xongn0" path="res://objects/background.tscn" id="3_ounkw"]
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
 [ext_resource type="PackedScene" path="res://objects/opponent.tscn" id="4_v4e22"]
+[ext_resource type="PackedScene" uid="uid://qrjqboplo557" path="res://objects/opponent.tscn" id="4_v4e22"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
 [ext_resource type="PackedScene" uid="uid://mltrbsla6lvm" path="res://actors/boost.tscn" id="6_ife0x"]
 [ext_resource type="AudioStream" uid="uid://dx324yaxvgura" path="res://resources/sounds/boost.wav" id="7_wwbun"]
 [ext_resource type="AudioStream" uid="uid://dvtu3v6cgm8ce" path="res://resources/sounds/boost2.wav" id="8_rupqm"]
 [ext_resource type="AudioStream" uid="uid://cxw0t2m5wkrgu" path="res://resources/sounds/hit.wav" id="9_xbv6c"]
 [ext_resource type="PackedScene" uid="uid://bamw0sls8psxy" path="res://objects/minimap/minimap.tscn" id="10_wl8d1"]
+[ext_resource type="AudioStream" uid="uid://by8nmryiwtl1k" path="res://resources/sounds/win.wav" id="12_2aqrs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi4dx"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -126,7 +128,11 @@ stream = ExtResource("9_xbv6c")
 [node name="Minimap" parent="." instance=ExtResource("10_wl8d1")]
 distance_totale = 80000
 
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_2aqrs")
+
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="BoostDurationTimer" to="." method="_on_boost_duration_timer_timeout"]
 [connection signal="depasse_adversaire" from="Minimap" to="." method="_on_minimap_depasse_adversaire"]
+[connection signal="finished" from="WinSound" to="." method="_on_win_sound_finished"]

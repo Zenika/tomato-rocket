@@ -15,7 +15,7 @@ extends Node2D
 @onready var boost_activation_sound = $BoostActivationSound
 @onready var hit_asteroid_sound = $HitAsteroidSound
 @onready var minimap = $Minimap
-
+@onready var win_sound = $WinSound
 const speed_multiplicator = 20
 const max_speed = 1600
 
@@ -106,8 +106,8 @@ func _on_boost_timer_timeout():
 	
 func win_game():
 	vertical_speed = 0
+	win_sound.play()
 	finish_game()
-	get_tree().change_scene_to_file("res://scenes/player_selection_screen.tscn")
 	
 func finish_game():
 	GlobalState.is_race_finished = true
@@ -130,3 +130,7 @@ func _on_minimap_depasse_adversaire(adversaire: Adversaire):
 	opponent.add_child(adversaire.icone)
 	opponent.position.x = randf_range(200, 1700)
 	add_child(opponent)
+
+
+func _on_win_sound_finished():
+	get_tree().change_scene_to_file("res://scenes/player_selection_screen.tscn") # Replace with function body.
