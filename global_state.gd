@@ -45,5 +45,5 @@ func init_game():
 func reset():
 	health = 30
 	is_race_finished = false
-	
-
+	selected_avatar = 0
+	selected_avatar = 0	

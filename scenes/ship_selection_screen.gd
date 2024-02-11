@@ -25,7 +25,7 @@ func _ready():
 	rect_ships[selected_ship].color = selected_color
 
 func _process(delta):
-	$Label.text = "Choose your ship with <= or => and press SPACE"
+	$Label.text = "[center]Choose your ship with <= or => and press SPACE[/center]"
 	if Input.is_action_just_pressed("move_right"):
 		rect_ships[selected_ship].color = initial_color
 		selected_ship += 1

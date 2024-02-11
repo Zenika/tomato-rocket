@@ -61,8 +61,11 @@ offset_right = 1636.0
 offset_bottom = 637.0
 color = Color(0, 0, 0.388235, 1)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 693.0
-offset_top = 200.0
-offset_right = 1217.0
-offset_bottom = 304.0
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 4.0
+offset_top = 198.0
+offset_right = 1921.0
+offset_bottom = 302.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
