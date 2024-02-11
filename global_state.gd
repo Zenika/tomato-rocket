@@ -14,6 +14,7 @@ var player = Character.new()
 var opponents = []
 
 # Game State
+var race_length = 30000
 var is_race_finished = false
 var health: float = 0
 var winner_index = 0
@@ -44,7 +45,8 @@ func init_game():
 		opponents.append(opponent)
 	
 func reset():
-	health = 30
+	race_length += race_length * 1.5
 	is_race_finished = false
+	health = 30
 	selected_avatar = 0
-	selected_avatar = 0	
+	selected_avatar = 0

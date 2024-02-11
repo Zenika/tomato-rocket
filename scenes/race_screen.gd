@@ -22,7 +22,6 @@ extends Node2D
 const speed_multiplicator = 20
 const max_speed = 1600
 
-const race_length = 80000
 var traveled_distance = 0
 
 const window_height = 950
@@ -42,9 +41,9 @@ func new_game():
 	GlobalState.init_game()
 	
 	update_health()
-	distance_label.text = str(traveled_distance) + '/' + str(race_length)
+	distance_label.text = str(traveled_distance) + '/' + str(GlobalState.race_length)
 	boost_progress_bar.value = 0
-	minimap.distance_totale = race_length
+	minimap.distance_totale = GlobalState.race_length
 	
 	$EnemyTimer.start()
 	$BoostTimer.start()
@@ -83,11 +82,11 @@ func _process(delta):
 
 	$Background.set_vertical_speed(vertical_speed)
 	traveled_distance += vertical_speed * delta
-	if (traveled_distance > race_length - window_height):
+	if (traveled_distance > GlobalState.race_length - window_height):
 		$FinishLine.set_process(true)
 		$FinishLine.set_vertical_speed(vertical_speed)
 	
-	distance_label.text = str(int(traveled_distance)) + ' / ' + str(race_length)
+	distance_label.text = str(int(traveled_distance)) + ' / ' + str(GlobalState.race_length)
 	
 	# Augmenter la fréquence des astéroides en fonction de la vitesse
 	if vertical_speed != 0:

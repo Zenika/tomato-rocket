@@ -16,8 +16,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(selected_avatar)
-	print(avatars[selected_avatar].visible)
 	if (GlobalState.is_race_finished):
 		avatars[selected_avatar].visible = false
 		avatars[GlobalState.winner_index].visible = true
