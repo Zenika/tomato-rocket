@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=13 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dx324yaxvgura" path="res://resources/sounds/boost.wav" id="7_wwbun"]
 [ext_resource type="AudioStream" uid="uid://dvtu3v6cgm8ce" path="res://resources/sounds/boost2.wav" id="8_rupqm"]
 [ext_resource type="AudioStream" uid="uid://cxw0t2m5wkrgu" path="res://resources/sounds/hit.wav" id="9_xbv6c"]
+[ext_resource type="PackedScene" uid="uid://bamw0sls8psxy" path="res://actors/adversaires.tscn" id="10_wl8d1"]
 
 [sub_resource type="Curve2D" id="Curve2D_xe6ri"]
 _data = {
@@ -93,6 +94,9 @@ stream = ExtResource("8_rupqm")
 
 [node name="HitAsteroidSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_xbv6c")
+
+[node name="Adversaires" parent="." instance=ExtResource("10_wl8d1")]
+distance_totale = 80000
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]

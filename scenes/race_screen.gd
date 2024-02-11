@@ -11,6 +11,7 @@ extends Node2D
 @onready var pickup_boost_sound = $PickupBoostSound
 @onready var boost_activation_sound = $BoostActivationSound
 @onready var hit_asteroid_sound = $HitAsteroidSound
+@onready var adversaires = $Adversaires
 
 const speed_multiplicator = 20
 const max_speed = 1600
@@ -36,6 +37,7 @@ func new_game():
 	health_label.text = str(GlobalState.health)
 	distance_label.text = str(traveled_distance) + '/' + str(race_length)
 	boost_progress_bar.value = 0
+	adversaires.distance_totale = race_length
 	
 	$EnemyTimer.start()
 	$BoostTimer.start()
@@ -58,6 +60,7 @@ func _process(delta):
 	if (is_finished):
 		vertical_speed = 0
 	else:
+		adversaires.position_player = traveled_distance
 		if !is_boosting:
 			vertical_speed = min(vertical_speed + delta * speed_multiplicator, max_speed)
 		if Input.is_action_pressed("boost"):
