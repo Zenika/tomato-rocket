@@ -6,6 +6,7 @@ class_name Adversaire
 @export var nom_adversaire = "default"
 @export var icone: Sprite2D
 @export var vertical_position = 0
+@export var on_screen = false
 
 signal on_update_position(position: int)
 

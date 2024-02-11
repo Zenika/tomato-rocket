@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b14vivypun7j1"]
+
+[ext_resource type="Script" path="res://actors/adversaire_screen.gd" id="1_88mef"]
+[ext_resource type="Texture2D" uid="uid://b83bfu4ajg2qm" path="res://resources/assets/ships/1.png" id="2_xx2sr"]
+[ext_resource type="Texture2D" uid="uid://cyk3ndrqlkdk3" path="res://resources/assets/ships/2.png" id="3_id88k"]
+[ext_resource type="Texture2D" uid="uid://0all4ke4lmpb" path="res://resources/assets/ships/3.png" id="4_fxpsw"]
+
+[node name="AdversaireScreen" type="Node2D"]
+script = ExtResource("1_88mef")
+
+[node name="Sprite2D_1" type="Sprite2D" parent="."]
+texture = ExtResource("2_xx2sr")
+
+[node name="Sprite2D_2" type="Sprite2D" parent="."]
+texture = ExtResource("3_id88k")
+
+[node name="Sprite2D_3" type="Sprite2D" parent="."]
+texture = ExtResource("4_fxpsw")

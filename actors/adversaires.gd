@@ -17,7 +17,7 @@ class_name Minimap
 
 @onready var finish_line = $AffichageAdversaires/FinishLine
 @onready var start_line = $AffichageAdversaires/StartLine
-
+signal depasse_adversaire(adversaire: Adversaire)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

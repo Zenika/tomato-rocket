@@ -2,6 +2,7 @@ extends Node2D
 
 @export var enemy_scene: PackedScene
 @export var boost_scene: PackedScene
+@export var adversaire_scene: PackedScene
 @export var vertical_speed = 200
 @onready var health_label = $Health
 @onready var distance_label = $Distance
@@ -115,3 +116,7 @@ func reset_boost():
 func _on_boost_duration_timer_timeout():
 	vertical_speed = last_speed_before_boost
 	is_boosting = false
+
+
+func _on_adversaires_depasse_adversaire(adversaire):
+	print("TODO : devrait faire apparaître un adversaire")

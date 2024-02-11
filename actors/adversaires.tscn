@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bamw0sls8psxy"]
+[gd_scene load_steps=8 format=3 uid="uid://bamw0sls8psxy"]
 
 [ext_resource type="Script" path="res://actors/adversaires.gd" id="1_h8osn"]
 [ext_resource type="Script" path="res://actors/AffichageAdversaires.gd" id="2_2540k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cyk3ndrqlkdk3" path="res://resources/assets/ships/2.png" id="4_ssd8h"]
 [ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="5_hehry"]
 [ext_resource type="Texture2D" uid="uid://0all4ke4lmpb" path="res://resources/assets/ships/3.png" id="6_fvp7h"]
+[ext_resource type="Script" path="res://actors/DepassementScript.gd" id="7_lfc1f"]
 
 [node name="Adversaires" type="Node2D"]
 script = ExtResource("1_h8osn")
@@ -55,3 +56,6 @@ position = Vector2(48, 96)
 position = Vector2(176, 880)
 scale = Vector2(0.847826, 0.855556)
 texture = ExtResource("6_fvp7h")
+
+[node name="DepassementScript" type="Node" parent="."]
+script = ExtResource("7_lfc1f")
