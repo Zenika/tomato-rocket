@@ -4,7 +4,7 @@ class_name Adversaire
 
 @export var speed = 200
 @export var nom_adversaire = "default"
-@export var icone: Sprite2D
+@export var icone: AnimatedSprite2D
 @export var vertical_position = 0
 @export var on_screen = false
 

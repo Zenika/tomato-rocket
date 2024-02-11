@@ -46,6 +46,7 @@ func new_game():
 	$EnemyTimer.start()
 	$BoostTimer.start()
 	$Player.start($PlayerPosition.position)
+	$Minimap.start()
 	
 func hurt_player():
 	GlobalState.health -= 10

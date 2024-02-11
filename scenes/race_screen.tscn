@@ -72,6 +72,7 @@ offset_right = 1911.0
 offset_bottom = 47.0
 
 [node name="Distance" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 39.0
 offset_top = 15.0
 offset_right = 416.0

@@ -6,21 +6,24 @@ class_name Minimap
 @export var distance_totale = 20000
 @export var position_player = 0
 
-@onready var sprite_adversaire_1 = $DisplayOpponents/SpriteAdversaire1
-@onready var sprite_adversaire_2 = $DisplayOpponents/SpriteAdversaire2
-@onready var sprite_adversaire_3 = $DisplayOpponents/SpriteAdversaire3
+@onready var sprite_adversaire_1 = $DisplayOpponents/AnimatedSpriteOpponent1
+@onready var sprite_adversaire_2 = $DisplayOpponents/AnimatedSpriteOpponent2
+@onready var sprite_adversaire_3 = $DisplayOpponents/AnimatedSpriteOpponent3
 
 @onready var finish_line_label = $DisplayOpponents/FinishLineLabel
 @onready var start_line_label = $DisplayOpponents/StartLineLabel
 
-@onready var sprite_player = $DisplayOpponents/SpritePlayer
+@onready var animated_sprite_player = $DisplayOpponents/AnimatedSpritePlayer
 
 @onready var finish_line = $DisplayOpponents/FinishLine
 @onready var start_line = $DisplayOpponents/StartLine
 signal depasse_adversaire(adversaire: Adversaire)
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func start():
+	sprite_adversaire_1.animation = GlobalState.opponents[0].ship_name
+	sprite_adversaire_2.animation = GlobalState.opponents[1].ship_name
+	sprite_adversaire_3.animation = GlobalState.opponents[2].ship_name
 	var adversaire_1 = Adversaire.new()
 	adversaire_1.nom_adversaire = "Jeff Bezos"
 	adversaire_1.speed = 300.0
@@ -37,6 +40,8 @@ func _ready():
 	adversaire_3.icone = sprite_adversaire_3
 	adversaires.append(adversaire_3)
 	
+	animated_sprite_player.animation = GlobalState.player.ship_name
+	
 	for adversaire in adversaires:
 		add_child(adversaire)
 		
@@ -48,7 +53,7 @@ func _process(delta):
 	for adversaire in adversaires:
 		var icone = adversaire.icone
 		icone.position.y = calculate_position_on_progress(adversaire.vertical_position)
-	sprite_player.position.y = calculate_position_on_progress(position_player)
+	animated_sprite_player.position.y = calculate_position_on_progress(position_player)
 
 func calculate_position_on_progress(pos: float):
 	return pos * (finish_line.position.y - start_line.position.y) / distance_totale  + start_line.position.y

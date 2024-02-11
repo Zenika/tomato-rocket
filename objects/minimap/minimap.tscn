@@ -1,11 +1,46 @@
-[gd_scene load_steps=7 format=3 uid="uid://bamw0sls8psxy"]
+[gd_scene load_steps=8 format=3 uid="uid://bamw0sls8psxy"]
 
 [ext_resource type="Script" path="res://objects/minimap/minimap.gd" id="1_htipk"]
 [ext_resource type="Texture2D" uid="uid://b83bfu4ajg2qm" path="res://resources/assets/ships/1.png" id="3_ukfgn"]
 [ext_resource type="Texture2D" uid="uid://cyk3ndrqlkdk3" path="res://resources/assets/ships/2.png" id="4_48ctq"]
 [ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="5_5prq6"]
-[ext_resource type="Texture2D" uid="uid://0all4ke4lmpb" path="res://resources/assets/ships/3.png" id="6_4fnem"]
+[ext_resource type="Texture2D" uid="uid://dmlegxn65muoc" path="res://resources/assets/ships/5.png" id="6_rfsqh"]
 [ext_resource type="Script" path="res://objects/minimap/minimap_overtake.gd" id="7_uda4p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gmc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rfsqh")
+}],
+"loop": true,
+"name": &"ship1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5prq6")
+}],
+"loop": true,
+"name": &"ship2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_48ctq")
+}],
+"loop": true,
+"name": &"ship3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ukfgn")
+}],
+"loop": true,
+"name": &"ship4",
+"speed": 5.0
+}]
 
 [node name="Minimap" type="Node2D"]
 script = ExtResource("1_htipk")
@@ -17,43 +52,48 @@ position = Vector2(40, 904)
 
 [node name="FinishLineLabel" type="RichTextLabel" parent="DisplayOpponents"]
 z_index = 10
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 126.0
-offset_bottom = 46.0
+offset_left = 37.0
+offset_top = 59.0
+offset_right = 131.0
+offset_bottom = 89.0
 scale = Vector2(2.78, 2.78)
 text = "Finish Line"
 
 [node name="StartLineLabel" type="RichTextLabel" parent="DisplayOpponents"]
 z_index = 10
-offset_left = 16.0
-offset_top = 901.0
-offset_right = 145.0
-offset_bottom = 931.0
+offset_left = 44.0
+offset_top = 930.0
+offset_right = 173.0
+offset_bottom = 960.0
 scale = Vector2(2.78, 2.78)
 text = "Starting point"
 
-[node name="SpriteAdversaire1" type="Sprite2D" parent="DisplayOpponents"]
-position = Vector2(128, 880)
-scale = Vector2(0.656863, 0.656863)
-texture = ExtResource("3_ukfgn")
-
-[node name="SpriteAdversaire2" type="Sprite2D" parent="DisplayOpponents"]
-position = Vector2(80, 880)
-texture = ExtResource("4_48ctq")
-
-[node name="SpritePlayer" type="Sprite2D" parent="DisplayOpponents"]
-position = Vector2(240, 880)
-scale = Vector2(0.65625, 0.65625)
-texture = ExtResource("5_5prq6")
-
 [node name="FinishLine" type="Marker2D" parent="DisplayOpponents"]
-position = Vector2(48, 96)
+position = Vector2(49, 166)
 
-[node name="SpriteAdversaire3" type="Sprite2D" parent="DisplayOpponents"]
-position = Vector2(176, 880)
-scale = Vector2(0.847826, 0.855556)
-texture = ExtResource("6_4fnem")
+[node name="AnimatedSpritePlayer" type="AnimatedSprite2D" parent="DisplayOpponents"]
+position = Vector2(94.454, 880.754)
+scale = Vector2(0.657, 0.657)
+sprite_frames = SubResource("SpriteFrames_0gmc4")
+animation = &"ship1"
+
+[node name="AnimatedSpriteOpponent1" type="AnimatedSprite2D" parent="DisplayOpponents"]
+position = Vector2(278.454, 880.753)
+scale = Vector2(0.657, 0.657)
+sprite_frames = SubResource("SpriteFrames_0gmc4")
+animation = &"ship4"
+
+[node name="AnimatedSpriteOpponent2" type="AnimatedSprite2D" parent="DisplayOpponents"]
+position = Vector2(214.454, 880.753)
+scale = Vector2(0.657, 0.657)
+sprite_frames = SubResource("SpriteFrames_0gmc4")
+animation = &"ship4"
+
+[node name="AnimatedSpriteOpponent3" type="AnimatedSprite2D" parent="DisplayOpponents"]
+position = Vector2(150.454, 880.753)
+scale = Vector2(0.657, 0.657)
+sprite_frames = SubResource("SpriteFrames_0gmc4")
+animation = &"ship4"
 
 [node name="OvertakeScript" type="Node" parent="."]
 script = ExtResource("7_uda4p")
