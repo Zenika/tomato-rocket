@@ -11,9 +11,12 @@ extends Node2D
 @onready var boost_progress_bar = $BoostProgressBar
 @onready var enemy_timer = $EnemyTimer
 @onready var boost_duration_timer = $BoostDurationTimer
+@onready var flash_timer = $FlashTimer
 @onready var pickup_boost_sound = $PickupBoostSound
 @onready var boost_activation_sound = $BoostActivationSound
 @onready var hit_asteroid_sound = $HitAsteroidSound
+@onready var flash_sprite: Sprite2D = $FlashSprite
+
 @onready var minimap = $Minimap
 @onready var win_sound = $WinSound
 const speed_multiplicator = 20
@@ -53,6 +56,8 @@ func hurt_player():
 	health_label.text = str(GlobalState.health)
 	vertical_speed /= 2
 	hit_asteroid_sound.play()
+	flash_timer.start()
+	flash_sprite.visible = true
 	if GlobalState.health <= 0:
 		finish_game()
 		get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
@@ -135,3 +140,7 @@ func _on_minimap_depasse_adversaire(adversaire: Adversaire):
 
 func _on_win_sound_finished():
 	get_tree().change_scene_to_file("res://scenes/player_selection_screen.tscn") # Replace with function body.
+
+
+func _on_flash_timer_timeout():
+	flash_sprite.visible = false

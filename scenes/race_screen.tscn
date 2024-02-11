@@ -1,17 +1,30 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=18 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
 [ext_resource type="PackedScene" uid="uid://cfj6xv2xongn0" path="res://objects/background.tscn" id="3_ounkw"]
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
-[ext_resource type="PackedScene" uid="uid://bw87shy2l27r4" path="res://objects/opponent.tscn" id="4_v4e22"]
+[ext_resource type="PackedScene" uid="uid://qrjqboplo557" path="res://objects/opponent.tscn" id="4_v4e22"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
-[ext_resource type="PackedScene" uid="uid://mltrbsla6lvm" path="res://actors/boost.tscn" id="6_ife0x"]
+[ext_resource type="PackedScene" path="res://actors/boost.tscn" id="6_ife0x"]
 [ext_resource type="AudioStream" uid="uid://dx324yaxvgura" path="res://resources/sounds/boost.wav" id="7_wwbun"]
 [ext_resource type="AudioStream" uid="uid://dvtu3v6cgm8ce" path="res://resources/sounds/boost2.wav" id="8_rupqm"]
 [ext_resource type="AudioStream" uid="uid://cxw0t2m5wkrgu" path="res://resources/sounds/hit.wav" id="9_xbv6c"]
 [ext_resource type="PackedScene" uid="uid://bamw0sls8psxy" path="res://objects/minimap/minimap.tscn" id="10_wl8d1"]
 [ext_resource type="AudioStream" uid="uid://by8nmryiwtl1k" path="res://resources/sounds/win.wav" id="12_2aqrs"]
+[ext_resource type="Texture2D" uid="uid://ccmxfku7gi8et" path="res://resources/assets/flash.png" id="13_rcsgn"]
+
+[sub_resource type="Curve2D" id="Curve2D_xe6ri"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 5, 0, 0, 0, 0, 1919, 3, 0, 0, 0, 0, 1919, 128, 0, 0, 0, 0, 1, 131, 0, 0, 0, 0, 2, 9, 0, 0, 0, 0, 1, 5)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_k1rs0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3, -114, 0, 0, 0, 0, 1, -302, 0, 0, 0, 0, 1926, -282, 0, 0, 0, 0, 1926, -110, 0, 0, 0, 0, 7, -111, 0, 0, 0, 0, 3, -114)
+}
+point_count = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi4dx"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -36,18 +49,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="Curve2D" id="Curve2D_xe6ri"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 5, 0, 0, 0, 0, 1919, 3, 0, 0, 0, 0, 1919, 128, 0, 0, 0, 0, 1, 131, 0, 0, 0, 0, 2, 9, 0, 0, 0, 0, 1, 5)
-}
-point_count = 6
-
-[sub_resource type="Curve2D" id="Curve2D_k1rs0"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3, -114, 0, 0, 0, 0, 1, -302, 0, 0, 0, 0, 1926, -282, 0, 0, 0, 0, 1926, -110, 0, 0, 0, 0, 7, -111, 0, 0, 0, 0, 3, -114)
-}
-point_count = 6
 
 [node name="RaceScreen" type="Node2D"]
 script = ExtResource("1_lc0uc")
@@ -77,16 +78,6 @@ offset_left = 39.0
 offset_top = 15.0
 offset_right = 416.0
 offset_bottom = 55.0
-
-[node name="BoostProgressBar" type="ProgressBar" parent="."]
-offset_left = 887.0
-offset_top = 18.0
-offset_right = 1062.0
-offset_bottom = 45.0
-theme_override_styles/background = SubResource("StyleBoxFlat_oi4dx")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ib1oh")
-step = 1.0
-show_percentage = false
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.52
@@ -128,11 +119,34 @@ stream = ExtResource("9_xbv6c")
 [node name="Minimap" parent="." instance=ExtResource("10_wl8d1")]
 distance_totale = 80000
 
+[node name="BoostProgressBar" type="ProgressBar" parent="."]
+z_index = 20
+offset_left = 887.0
+offset_top = 18.0
+offset_right = 1062.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_oi4dx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ib1oh")
+step = 1.0
+show_percentage = false
+
 [node name="WinSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_2aqrs")
+
+[node name="FlashSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.396078)
+position = Vector2(994.5, 539.5)
+scale = Vector2(55.8718, 76.4118)
+texture = ExtResource("13_rcsgn")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="BoostDurationTimer" to="." method="_on_boost_duration_timer_timeout"]
 [connection signal="depasse_adversaire" from="Minimap" to="." method="_on_minimap_depasse_adversaire"]
 [connection signal="finished" from="WinSound" to="." method="_on_win_sound_finished"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
