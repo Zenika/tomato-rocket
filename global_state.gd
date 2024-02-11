@@ -15,11 +15,12 @@ var opponents = []
 
 # Game State
 var is_race_finished = false
-var health
+var health: float = 0
 var winner_index = 0
+const max_health: float = 30;
 	
 func init_game():
-	health = 30
+	health = max_health
 	
 	player.avatar = avatars[selected_avatar]
 	player.ship = ships[selected_ship]

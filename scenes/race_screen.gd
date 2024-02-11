@@ -6,7 +6,6 @@ extends Node2D
 
 @export var vertical_speed = 200
 
-@onready var health_label = $Health
 @onready var distance_label = $Distance
 @onready var boost_progress_bar = $BoostProgressBar
 @onready var enemy_timer = $EnemyTimer
@@ -16,6 +15,7 @@ extends Node2D
 @onready var boost_activation_sound = $BoostActivationSound
 @onready var hit_asteroid_sound = $HitAsteroidSound
 @onready var flash_sprite: Sprite2D = $FlashSprite
+@onready var health_progress_bar = $HealthProgressBar
 
 @onready var minimap = $Minimap
 @onready var win_sound = $WinSound
@@ -41,7 +41,7 @@ func _ready():
 func new_game():
 	GlobalState.init_game()
 	
-	health_label.text = str(GlobalState.health)
+	update_health()
 	distance_label.text = str(traveled_distance) + '/' + str(race_length)
 	boost_progress_bar.value = 0
 	minimap.distance_totale = race_length
@@ -50,10 +50,14 @@ func new_game():
 	$BoostTimer.start()
 	$Player.start($PlayerPosition.position)
 	$Minimap.start()
+
+func update_health():
+	var val = (GlobalState.health / GlobalState.max_health)
+	health_progress_bar.value = val * 100
 	
 func hurt_player():
 	GlobalState.health -= 10
-	health_label.text = str(GlobalState.health)
+	update_health()
 	vertical_speed /= 2
 	hit_asteroid_sound.play()
 	flash_timer.start()
