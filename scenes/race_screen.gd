@@ -22,7 +22,6 @@ var traveled_distance = 0
 const window_height = 950
 const window_width = 1920
 
-var health = 100
 var is_boost_enabled = false
 
 const distance_between_asteroids = 250.0
@@ -34,7 +33,7 @@ func _ready():
 	new_game()
 	
 func new_game():
-	health_label.text = str(health)
+	health_label.text = str(GlobalState.health)
 	distance_label.text = str(traveled_distance) + '/' + str(race_length)
 	boost_progress_bar.value = 0
 	
@@ -43,13 +42,12 @@ func new_game():
 	$Player.start($PlayerPosition.position)
 	
 func hurt_player():
-	health -= 10
-	health_label.text = str(health)
+	GlobalState.health -= 10
+	health_label.text = str(GlobalState.health)
 	vertical_speed /= 2
 	hit_asteroid_sound.play()
-	if health <= 0:
+	if GlobalState.health <= 0:
 		finish_game()
-		get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 		
 func fill_boost():
 	pickup_boost_sound.play()
@@ -105,6 +103,7 @@ func win_game():
 func finish_game():
 	is_finished = true
 	$Player.stop($PlayerPosition.position)
+	get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 	
 func reset_boost():
 	boost_progress_bar.value = 0

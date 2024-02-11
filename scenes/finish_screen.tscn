@@ -6,9 +6,9 @@
 script = ExtResource("1_xg21q")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 685.0
+offset_left = -1.0
 offset_top = 447.0
-offset_right = 1256.0
+offset_right = 1915.0
 offset_bottom = 592.0
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
