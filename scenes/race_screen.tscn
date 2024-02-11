@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=15 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
@@ -10,6 +10,30 @@
 [ext_resource type="AudioStream" uid="uid://dvtu3v6cgm8ce" path="res://resources/sounds/boost2.wav" id="8_rupqm"]
 [ext_resource type="AudioStream" uid="uid://cxw0t2m5wkrgu" path="res://resources/sounds/hit.wav" id="9_xbv6c"]
 [ext_resource type="PackedScene" path="res://actors/adversaires.tscn" id="10_wl8d1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi4dx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.992157, 0.843137, 0.0862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib1oh"]
+bg_color = Color(0.992157, 0.843137, 0.0862745, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.992157, 0.843137, 0.0862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Curve2D" id="Curve2D_xe6ri"]
 _data = {
@@ -55,6 +79,8 @@ offset_left = 887.0
 offset_top = 18.0
 offset_right = 1062.0
 offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_oi4dx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ib1oh")
 step = 1.0
 show_percentage = false
 
