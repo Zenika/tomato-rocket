@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8atxnivfl7wv"]
+
+[ext_resource type="Script" path="res://scenes/ship_selection_screen.gd" id="1_580a3"]
+[ext_resource type="Texture2D" uid="uid://b83bfu4ajg2qm" path="res://resources/assets/ships/1.png" id="2_4blk4"]
+[ext_resource type="Texture2D" uid="uid://cyk3ndrqlkdk3" path="res://resources/assets/ships/2.png" id="3_5310e"]
+[ext_resource type="Texture2D" uid="uid://dmlegxn65muoc" path="res://resources/assets/ships/5.png" id="4_7lemx"]
+[ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="5_32klr"]
+
+[node name="ShipSelectionScreen" type="Node2D"]
+script = ExtResource("1_580a3")
+
+[node name="Ship1" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(384, 540)
+rotation = -3.14159
+scale = Vector2(4, 4)
+texture = ExtResource("4_7lemx")
+
+[node name="Ship1Rect" type="ColorRect" parent="."]
+offset_left = 284.0
+offset_top = 437.0
+offset_right = 484.0
+offset_bottom = 637.0
+color = Color(0, 0, 0.388235, 1)
+
+[node name="Ship2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(768, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("5_32klr")
+
+[node name="Ship2Rect" type="ColorRect" parent="."]
+offset_left = 669.0
+offset_top = 437.0
+offset_right = 869.0
+offset_bottom = 637.0
+color = Color(0, 0, 0.388235, 1)
+
+[node name="Ship3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1152, 540)
+rotation = 3.14159
+scale = Vector2(4, 4)
+texture = ExtResource("3_5310e")
+
+[node name="Ship3Rect" type="ColorRect" parent="."]
+offset_left = 1052.0
+offset_top = 437.0
+offset_right = 1252.0
+offset_bottom = 637.0
+color = Color(0, 0, 0.388235, 1)
+
+[node name="Ship4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1536, 540)
+rotation = -3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("2_4blk4")
+
+[node name="Ship4Rect" type="ColorRect" parent="."]
+offset_left = 1436.0
+offset_top = 437.0
+offset_right = 1636.0
+offset_bottom = 637.0
+color = Color(0, 0, 0.388235, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 693.0
+offset_top = 200.0
+offset_right = 1217.0
+offset_bottom = 304.0

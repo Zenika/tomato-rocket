@@ -36,6 +36,8 @@ func _ready():
 	new_game()
 	
 func new_game():
+	GlobalState.init_game()
+	
 	health_label.text = str(GlobalState.health)
 	distance_label.text = str(traveled_distance) + '/' + str(race_length)
 	boost_progress_bar.value = 0
