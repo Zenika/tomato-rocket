@@ -13,5 +13,5 @@ func _process(delta):
 	else:
 		$RichTextLabel.text = "[center]Game Over[/center]"
 	if Input.is_action_pressed("boost"):
-		GlobalState.health = 30;
+		GlobalState.reset()
 		get_tree().change_scene_to_file("res://scenes/race_screen.tscn")

@@ -15,7 +15,6 @@ extends Node2D
 
 const speed_multiplicator = 20
 const max_speed = 1600
-var is_finished = false
 
 const race_length = 80000
 var traveled_distance = 0
@@ -50,6 +49,7 @@ func hurt_player():
 	hit_asteroid_sound.play()
 	if GlobalState.health <= 0:
 		finish_game()
+		get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 		
 func fill_boost():
 	pickup_boost_sound.play()
@@ -57,7 +57,7 @@ func fill_boost():
 	is_boost_enabled = boost_progress_bar.value >= 100
 
 func _process(delta):
-	if (is_finished):
+	if (GlobalState.is_race_finished):
 		vertical_speed = 0
 	else:
 		adversaires.position_player = traveled_distance
@@ -102,11 +102,11 @@ func _on_boost_timer_timeout():
 func win_game():
 	vertical_speed = 0
 	finish_game()
+	get_tree().change_scene_to_file("res://scenes/player_selection_screen.tscn")
 	
 func finish_game():
-	is_finished = true
+	GlobalState.is_race_finished = true
 	$Player.stop($PlayerPosition.position)
-	get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 	
 func reset_boost():
 	boost_progress_bar.value = 0
