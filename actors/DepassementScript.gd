@@ -1,8 +1,8 @@
 extends Node
 
-@onready var adversaires = $".."
+@onready var opponents_state = $".."
 
-@export var player_vertical_position = 300
+
 
 const distance_visible_to_player = 800
 
@@ -12,8 +12,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	for adversaire in adversaires.adversaires:
-		if !adversaire.on_screen and abs(adversaire.vertical_position - player_vertical_position) < distance_visible_to_player:
-			adversaire.on_screen = true
-			adversaires.depasse_adversaire.emit(adversaire)
+	for adversaire in opponents_state.adversaires:
+		if abs(adversaire.vertical_position - opponents_state.position_player) < distance_visible_to_player:
+			opponents_state.depasse_adversaire.emit(adversaire)
+		
 	
