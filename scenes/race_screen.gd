@@ -22,7 +22,7 @@ extends Node2D
 const speed_multiplicator = 20
 const max_speed = 1600
 
-const race_length = 1000
+const race_length = 80000
 var traveled_distance = 0
 
 const window_height = 950
