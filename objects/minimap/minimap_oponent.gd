@@ -7,6 +7,7 @@ class_name Adversaire
 @export var icone: AnimatedSprite2D
 @export var vertical_position = 0
 @export var on_screen = false
+var character: Character
 
 signal on_update_position(position: int)
 

@@ -16,5 +16,5 @@ func _process(delta):
 		if !adversaire.on_screen and adversaire.vertical_position - opponents_state.position_player < distance_visible_to_player and adversaire.vertical_position - opponents_state.position_player < 0:
 			opponents_state.depasse_adversaire.emit(adversaire)
 			adversaire.on_screen = true
-		
+			
 	

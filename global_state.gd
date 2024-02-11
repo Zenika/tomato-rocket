@@ -29,7 +29,7 @@ func init_game():
 	player.is_player = true
 	
 	var remaining_avatars = [] + avatars
-	remaining_avatars.remove_at(selected_avatar)
+	remaining_avatars.remove_at((selected_avatar + remaining_avatars.size()) % remaining_avatars.size())
 	var remaining_ships =  [] + ships
 	remaining_ships.remove_at(selected_ship)
 	var remaining_ships_name =  [] + ships_name
