@@ -2,8 +2,10 @@ extends Node2D
 
 @export var enemy_scene: PackedScene
 @export var boost_scene: PackedScene
-@export var adversaire_scene: PackedScene
+@export var opponent_scene: PackedScene
+
 @export var vertical_speed = 200
+
 @onready var health_label = $Health
 @onready var distance_label = $Distance
 @onready var boost_progress_bar = $BoostProgressBar
@@ -12,7 +14,7 @@ extends Node2D
 @onready var pickup_boost_sound = $PickupBoostSound
 @onready var boost_activation_sound = $BoostActivationSound
 @onready var hit_asteroid_sound = $HitAsteroidSound
-@onready var adversaires = $Adversaires
+@onready var minimap = $Minimap
 
 const speed_multiplicator = 20
 const max_speed = 1600
@@ -37,7 +39,7 @@ func new_game():
 	health_label.text = str(GlobalState.health)
 	distance_label.text = str(traveled_distance) + '/' + str(race_length)
 	boost_progress_bar.value = 0
-	adversaires.distance_totale = race_length
+	minimap.distance_totale = race_length
 	
 	$EnemyTimer.start()
 	$BoostTimer.start()
@@ -61,7 +63,7 @@ func _process(delta):
 	if (GlobalState.is_race_finished):
 		vertical_speed = 0
 	else:
-		adversaires.position_player = traveled_distance
+		minimap.position_player = traveled_distance
 		if !is_boosting:
 			vertical_speed = min(vertical_speed + delta * speed_multiplicator, max_speed)
 		if Input.is_action_pressed("boost"):
@@ -118,5 +120,11 @@ func _on_boost_duration_timer_timeout():
 	is_boosting = false
 
 
-func _on_adversaires_depasse_adversaire(adversaire):
-	print("TODO : devrait faire apparaître un adversaire")
+func _on_minimap_depasse_adversaire(adversaire: Adversaire):
+	print("TODO : devrait faire apparaître un adversaire", adversaire.icone)
+	var opponent = opponent_scene.instantiate()
+	var opponent_sprite = Sprite2D.new()
+	opponent_sprite.texture = adversaire.icone
+	opponent.add_child(adversaire.icone)
+	opponent.position.x = randf_range(200, 1700)
+	add_child(opponent)

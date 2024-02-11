@@ -6,17 +6,17 @@ class_name Minimap
 @export var distance_totale = 20000
 @export var position_player = 0
 
-@onready var sprite_adversaire_1 = $AffichageAdversaires/SpriteAdversaire1
-@onready var sprite_adversaire_2 = $AffichageAdversaires/SpriteAdversaire2
-@onready var sprite_adversaire_3 = $AffichageAdversaires/SpriteAdversaire3
+@onready var sprite_adversaire_1 = $DisplayOpponents/SpriteAdversaire1
+@onready var sprite_adversaire_2 = $DisplayOpponents/SpriteAdversaire2
+@onready var sprite_adversaire_3 = $DisplayOpponents/SpriteAdversaire3
 
-@onready var finish_line_label = $AffichageAdversaires/FinishLineLabel
-@onready var start_line_label = $AffichageAdversaires/StartLineLabel
+@onready var finish_line_label = $DisplayOpponents/FinishLineLabel
+@onready var start_line_label = $DisplayOpponents/StartLineLabel
 
-@onready var sprite_player = $AffichageAdversaires/SpritePlayer
+@onready var sprite_player = $DisplayOpponents/SpritePlayer
 
-@onready var finish_line = $AffichageAdversaires/FinishLine
-@onready var start_line = $AffichageAdversaires/StartLine
+@onready var finish_line = $DisplayOpponents/FinishLine
+@onready var start_line = $DisplayOpponents/StartLine
 signal depasse_adversaire(adversaire: Adversaire)
 
 # Called when the node enters the scene tree for the first time.
