@@ -14,7 +14,7 @@ var player = Character.new()
 var opponents = []
 
 # Game State
-var race_length = 30000
+var race_length = 80000
 var is_race_finished = false
 var health: float = 0
 var winner_index = 0
