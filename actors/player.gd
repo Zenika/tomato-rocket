@@ -4,10 +4,11 @@ class_name Player
 var lateral_speed = 800
 var screen_size
 @onready var flames_animation = $FlamesAnimation
-
+@onready var animated_sprite_2D = $AnimatedSprite2D
 const turning_constante = PI/8
 
 func start(pos):
+	animated_sprite_2D.animation = GlobalState.player.ship_name	
 	position = pos
 	
 func _ready():

@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://djfsmn2nrjiuu"]
+[gd_scene load_steps=16 format=3 uid="uid://djfsmn2nrjiuu"]
 
 [ext_resource type="Script" path="res://actors/player.gd" id="1_je0pj"]
 [ext_resource type="Texture2D" uid="uid://do5cirxbaysib" path="res://resources/assets/ships/tintin_rocket.png" id="2_qx22x"]
+[ext_resource type="Texture2D" uid="uid://dmlegxn65muoc" path="res://resources/assets/ships/5.png" id="2_vagwo"]
 [ext_resource type="Texture2D" uid="uid://dpwy6e46cn1ox" path="res://resources/assets/effects/thrust_0.png" id="3_f5kmt"]
+[ext_resource type="Texture2D" uid="uid://cyk3ndrqlkdk3" path="res://resources/assets/ships/2.png" id="4_a1fti"]
 [ext_resource type="Texture2D" uid="uid://c31o76l8hlyfr" path="res://resources/assets/effects/thrust_1.png" id="4_cexvr"]
+[ext_resource type="Texture2D" uid="uid://b83bfu4ajg2qm" path="res://resources/assets/ships/1.png" id="5_ow06o"]
 [ext_resource type="Texture2D" uid="uid://djmbg3np52hd" path="res://resources/assets/effects/thrust_2.png" id="5_ww1i4"]
 [ext_resource type="Texture2D" uid="uid://bdqxeqoxjdqax" path="res://resources/assets/effects/thrust_3.png" id="6_bky5y"]
 [ext_resource type="Texture2D" uid="uid://c8xfyf7ab746b" path="res://resources/assets/effects/thrust_4.png" id="7_adyri"]
@@ -18,10 +21,34 @@ height = 124.0
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_vagwo")
+}],
+"loop": true,
+"name": &"ship1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_qx22x")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"ship2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_a1fti")
+}],
+"loop": true,
+"name": &"ship3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ow06o")
+}],
+"loop": true,
+"name": &"ship4",
 "speed": 5.0
 }]
 
@@ -63,7 +90,7 @@ shape = SubResource("CapsuleShape2D_ivgua")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2mlpe")
-animation = &"idle"
+animation = &"ship4"
 
 [node name="FlamesAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.08165e-12, 74)

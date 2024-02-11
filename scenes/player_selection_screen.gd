@@ -31,7 +31,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("move_left"):
 			avatars[selected_avatar].visible = false
 			selected_avatar -= 1
-			selected_avatar = selected_avatar % avatars.size()
+			selected_avatar = (selected_avatar + avatars.size()) % avatars.size()
 			avatars[selected_avatar].visible = true
 		if Input.is_action_just_pressed("boost"):
 			GlobalState.selected_avatar = selected_avatar

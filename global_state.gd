@@ -6,6 +6,7 @@ var selected_avatar = 0
 
 # Ships
 var ships
+var ships_name
 var selected_ship = 0
 
 # Characters
@@ -22,6 +23,7 @@ func init_game():
 	
 	player.avatar = avatars[selected_avatar]
 	player.ship = ships[selected_ship]
+	player.ship_name = ships_name[selected_ship]
 	player.ranking_position = 0
 	player.is_player = true
 	
@@ -29,11 +31,14 @@ func init_game():
 	remaining_avatars.remove_at(selected_avatar)
 	var remaining_ships =  [] + ships
 	remaining_ships.remove_at(selected_ship)
+	var remaining_ships_name =  [] + ships_name
+	remaining_ships_name.remove_at(selected_ship)
 
 	for i in range(remaining_avatars.size()):
 		var opponent = Character.new()
 		opponent.avatar = remaining_avatars[i]
 		opponent.ship = remaining_ships[i]
+		opponent.ship_name = remaining_ships_name[i]
 		opponent.ranking_position = i + 1
 		opponents.append(opponent)
 	

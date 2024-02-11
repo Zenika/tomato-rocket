@@ -12,7 +12,6 @@ script = ExtResource("1_580a3")
 [node name="Ship1" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(384, 540)
-rotation = -3.14159
 scale = Vector2(4, 4)
 texture = ExtResource("4_7lemx")
 
@@ -39,7 +38,6 @@ color = Color(0, 0, 0.388235, 1)
 [node name="Ship3" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(1152, 540)
-rotation = 3.14159
 scale = Vector2(4, 4)
 texture = ExtResource("3_5310e")
 
@@ -53,7 +51,6 @@ color = Color(0, 0, 0.388235, 1)
 [node name="Ship4" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(1536, 540)
-rotation = -3.14159
 scale = Vector2(3, 3)
 texture = ExtResource("2_4blk4")
 
