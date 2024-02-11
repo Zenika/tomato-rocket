@@ -49,6 +49,7 @@ func hurt_player():
 	hit_asteroid_sound.play()
 	if health <= 0:
 		finish_game()
+		get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 		
 func fill_boost():
 	pickup_boost_sound.play()
