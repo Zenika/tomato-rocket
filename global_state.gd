@@ -18,7 +18,8 @@ var race_length = 80000
 var is_race_finished = false
 var health: float = 0
 var winner_index = 0
-const max_health: float = 30;
+const max_health: float = 30
+var ranking
 	
 func init_game():
 	health = max_health
@@ -45,8 +46,11 @@ func init_game():
 		opponents.append(opponent)
 	
 func reset():
+	race_length = 50000
+	is_race_finished = false
+	selected_avatar = 0
+	selected_ship = 0
+	
+func next_level():
 	race_length += race_length * 1.5
 	is_race_finished = false
-	health = 30
-	selected_avatar = 0
-	selected_avatar = 0

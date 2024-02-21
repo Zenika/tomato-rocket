@@ -28,19 +28,19 @@ func start():
 	sprite_adversaire_3.animation = GlobalState.opponents[2].ship_name
 	var adversaire_1 = Adversaire.new()
 	adversaire_1.nom_adversaire = GlobalState.opponents[0].ship_name
-	adversaire_1.speed = 300.0
+	adversaire_1.speed = 100.0
 	adversaire_1.icone = sprite_adversaire_1
 	adversaire_1.character = GlobalState.opponents[0]
 	adversaires.append(adversaire_1)
 	var adversaire_2 = Adversaire.new()
 	adversaire_2.nom_adversaire = GlobalState.opponents[1].ship_name
-	adversaire_2.speed = 700.0
+	adversaire_2.speed = 400.0
 	adversaire_2.icone = sprite_adversaire_2
 	adversaire_2.character = GlobalState.opponents[1]
 	adversaires.append(adversaire_2)
 	var adversaire_3 = Adversaire.new()
 	adversaire_3.nom_adversaire = GlobalState.opponents[2].ship_name
-	adversaire_3.speed = 1000.0
+	adversaire_3.speed = 800.0
 	adversaire_3.icone = sprite_adversaire_3
 	adversaire_3.character = GlobalState.opponents[2]
 	adversaires.append(adversaire_3)
@@ -50,11 +50,8 @@ func start():
 	for adversaire in adversaires:
 		add_child(adversaire)
 	
-
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	for adversaire in adversaires:
 		var icone = adversaire.icone
 		icone.position.y = calculate_position_on_progress(adversaire.vertical_position)
@@ -69,13 +66,15 @@ func _process(delta):
 	ranking_players.append(player_character)
 	ranking_players.sort_custom(func(adv1: Adversaire, adv2: Adversaire): return adv1.vertical_position > adv2.vertical_position)
 	
-	for opponent_index in range(ranking_players.size()):
-		var opponent = ranking_players[opponent_index]
-		if opponent.nom_adversaire == "player":
-			GlobalState.player.ranking_position = opponent_index
-	print("Position joueur ", GlobalState.player.ranking_position)
-
-			
+	# Update ranking position of each character in Global State
+	for i in range(ranking_players.size()):
+		var character = ranking_players[i]
+		if character.nom_adversaire == "player":
+			GlobalState.player.ranking_position = i
+		else:
+			for opponent in GlobalState.opponents:
+				if opponent.id == character.character.id:
+					opponent.ranking_position = i
 	
 	#for adversaire in adversaires:
 		#ranking_players.append([adversaire.nom_adversaire, adversaire.vertical_position])
@@ -88,7 +87,6 @@ func _process(delta):
 			#var global_state_opponent = GlobalState.opponents.filter(func(opponent): return opponent.ship_name == ranked_player[0])[0]
 			#global_state_opponent.ranking_position = ranked_player_index
 	#print(GlobalState.opponents.map(func(opponent): return opponent.ship_name + " " + str(opponent.ranking_position)))
-
 
 func calculate_position_on_progress(pos: float):
 	return pos * (finish_line.position.y - start_line.position.y) / distance_totale  + start_line.position.y

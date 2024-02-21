@@ -1,19 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhj2jxxt77k70"]
+[gd_scene load_steps=7 format=3 uid="uid://rifog5poigdc"]
 
 [ext_resource type="Script" path="res://scenes/finish_screen.gd" id="1_xg21q"]
-[ext_resource type="AudioStream" uid="uid://226hohmewj0q" path="res://resources/sounds/game-over.wav" id="2_s5k1b"]
+[ext_resource type="PackedScene" uid="uid://dsjl0hc5gc6nw" path="res://resources/assets/characters/GLTF/Astronaut_FernandoTheFlamingo.gltf" id="2_r6xse"]
+[ext_resource type="PackedScene" uid="uid://bqy4oyxvyawu" path="res://resources/assets/characters/GLTF/Astronaut_FinnTheFrog.gltf" id="3_6hu75"]
+[ext_resource type="PackedScene" uid="uid://2pooj6agqxc0" path="res://resources/assets/characters/GLTF/Astronaut_BarbaraTheBee.gltf" id="4_igjrx"]
+[ext_resource type="PackedScene" uid="uid://chilf0jbc7mnk" path="res://resources/assets/characters/GLTF/Astronaut_RaeTheRedPanda.gltf" id="5_gipn6"]
 
-[node name="FinishScreen" type="Node2D"]
+[sub_resource type="Environment" id="Environment_qqmia"]
+
+[node name="FinishScreen" type="Node3D"]
 script = ExtResource("1_xg21q")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -1.0
-offset_top = 447.0
-offset_right = 1915.0
-offset_bottom = 592.0
+[node name="TextLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+offset_top = 78.0
+offset_right = 1917.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "[center]Game Over[/center]"
+text = "
+"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_s5k1b")
+[node name="RankingLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+offset_top = 243.0
+offset_right = 1924.0
+offset_bottom = 382.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "
+"
+
+[node name="Avatar1" parent="." instance=ExtResource("2_r6xse")]
+unique_name_in_owner = true
+transform = Transform3D(1, -6.97574e-16, 6.97574e-16, 6.97574e-16, 1, -6.97574e-16, -6.97574e-16, 6.97574e-16, 1, 0, 0, 0)
+visible = false
+
+[node name="Avatar2" parent="." instance=ExtResource("3_6hu75")]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="Avatar3" parent="." instance=ExtResource("4_igjrx")]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="Avatar4" parent="." instance=ExtResource("5_gipn6")]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -6.97574e-16, 6.97574e-16, 6.97574e-16, 1, -6.97574e-16, -6.97574e-16, 6.97574e-16, 1, 2.08234e-12, 2, 4)
+environment = SubResource("Environment_qqmia")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, -0.694135, 0.540887, 0.450034)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2mfbauua8tc"]
 
-[ext_resource type="Script" path="res://objects/minimap/minimap_oponent.gd" id="1_brkij"]
+[ext_resource type="Script" path="res://objects/minimap/minimap_opponent.gd" id="1_brkij"]
 [ext_resource type="Texture2D" uid="uid://b83bfu4ajg2qm" path="res://resources/assets/ships/1.png" id="2_wwf8f"]
 
 [node name="MinimapOpponent" type="Node2D"]
