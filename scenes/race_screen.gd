@@ -6,6 +6,7 @@ extends Node2D
 
 # Objects
 @onready var distance_label = $Distance
+@onready var level_label = $Level
 @onready var flash_sprite: Sprite2D = $FlashSprite
 @onready var minimap = $Minimap
 
@@ -42,7 +43,16 @@ var is_boosting = false
 var last_speed_before_boost = 0
 
 func _ready():
-	new_game()
+	GlobalState.init_game()
+	update_health()
+	level_label.text = '[center]Level ' + str(GlobalState.level) + '[/center]'
+	boost_progress_bar.value = 0
+	minimap.distance_totale = GlobalState.race_length
+	
+	$EnemyTimer.start()
+	$BoostTimer.start()
+	$Player.start($PlayerPosition.position)
+	$Minimap.start()
 
 func _process(delta):
 	if (GlobalState.is_race_finished):
@@ -60,26 +70,13 @@ func _process(delta):
 		$FinishLine.set_process(true)
 		$FinishLine.set_vertical_speed(vertical_speed)
 	
-	distance_label.text = str(int(traveled_distance)) + ' / ' + str(GlobalState.race_length)
+	distance_label.text = '[center]' + str(int(traveled_distance)) + ' / ' + str(GlobalState.race_length) + '[/center]'
 	
 	# Augmenter la fréquence des astéroides en fonction de la vitesse
 	if vertical_speed != 0:
 		enemy_timer.wait_time = max(distance_between_asteroids / vertical_speed, 0.45)
 	else:
 		enemy_timer.stop()
-		
-func new_game():
-	GlobalState.init_game()
-	
-	update_health()
-	distance_label.text = str(traveled_distance) + '/' + str(GlobalState.race_length)
-	boost_progress_bar.value = 0
-	minimap.distance_totale = GlobalState.race_length
-	
-	$EnemyTimer.start()
-	$BoostTimer.start()
-	$Player.start($PlayerPosition.position)
-	$Minimap.start()
 
 func update_health():
 	var val = (GlobalState.health / GlobalState.max_health)
@@ -114,24 +111,24 @@ func reset_boost():
 	is_boost_enabled = false
 	
 func win_game():
+	finish_game()
 	vertical_speed = 0
 	win_sound.play()
 	
 func lose_game():
+	finish_game()
 	vertical_speed = 0
 	lose_sound.play()
 	
 func finish_game():
 	GlobalState.is_race_finished = true
-	$Player.stop($PlayerPosition.position)
 	$Minimap.set_process(false)
-	get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 
 func _on_lose_sound_finished():
-	finish_game()
+	get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 	
 func _on_win_sound_finished():
-	finish_game()
+	get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 
 func _on_boost_duration_timer_timeout():
 	vertical_speed = last_speed_before_boost
