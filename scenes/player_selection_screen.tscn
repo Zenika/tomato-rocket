@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://chilf0jbc7mnk" path="res://resources/assets/characters/GLTF/Astronaut_RaeTheRedPanda.gltf" id="4_jcyde"]
 
 [sub_resource type="Environment" id="Environment_swwl4"]
-background_mode = 1
-background_color = Color(0, 0, 0.388235, 1)
 
 [node name="PlayerSelectionScreen" type="Node3D"]
 script = ExtResource("1_ss3t2")

@@ -52,20 +52,20 @@ position = Vector2(40, 904)
 
 [node name="FinishLineLabel" type="RichTextLabel" parent="DisplayOpponents"]
 z_index = 10
-offset_left = 37.0
-offset_top = 59.0
-offset_right = 131.0
-offset_bottom = 89.0
-scale = Vector2(2.78, 2.78)
+offset_left = 76.0
+offset_top = 67.0
+offset_right = 331.0
+offset_bottom = 127.0
+theme_override_font_sizes/normal_font_size = 40
 text = "Finish Line"
 
 [node name="StartLineLabel" type="RichTextLabel" parent="DisplayOpponents"]
 z_index = 10
-offset_left = 44.0
-offset_top = 930.0
-offset_right = 173.0
-offset_bottom = 960.0
-scale = Vector2(2.78, 2.78)
+offset_left = 59.0
+offset_top = 931.0
+offset_right = 363.0
+offset_bottom = 999.0
+theme_override_font_sizes/normal_font_size = 40
 text = "Starting point"
 
 [node name="FinishLine" type="Marker2D" parent="DisplayOpponents"]

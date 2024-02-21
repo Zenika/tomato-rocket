@@ -58,10 +58,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r22up"]
 bg_color = Color(1, 0, 0, 1)
@@ -70,10 +70,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="RaceScreen" type="Node2D"]
 script = ExtResource("1_lc0uc")
@@ -85,6 +85,7 @@ opponent_scene = ExtResource("4_v4e22")
 position = Vector2(960, 960)
 
 [node name="Player" parent="." instance=ExtResource("2_ig1mj")]
+z_index = 1
 
 [node name="Background" parent="." instance=ExtResource("3_ounkw")]
 
@@ -92,11 +93,15 @@ position = Vector2(960, 960)
 position = Vector2(0, -21)
 
 [node name="Distance" type="RichTextLabel" parent="."]
-visible = false
-offset_left = 39.0
-offset_top = 15.0
-offset_right = 416.0
-offset_bottom = 55.0
+z_index = 9
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 345.0
+offset_bottom = 68.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Distance"
+scroll_active = false
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.52
@@ -136,6 +141,7 @@ stream = ExtResource("8_rupqm")
 stream = ExtResource("9_xbv6c")
 
 [node name="Minimap" parent="." instance=ExtResource("10_wl8d1")]
+z_index = 3
 distance_totale = 80000
 
 [node name="BoostProgressBar" type="ProgressBar" parent="."]
@@ -155,6 +161,7 @@ stream = ExtResource("12_2aqrs")
 [node name="FlashSprite" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.396078)
+z_index = 1
 position = Vector2(994.5, 539.5)
 scale = Vector2(55.8718, 76.4118)
 texture = ExtResource("13_rcsgn")
@@ -176,6 +183,17 @@ show_percentage = false
 
 [node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_6k5xa")
+
+[node name="Level" type="RichTextLabel" parent="."]
+z_index = 9
+offset_left = 1730.0
+offset_top = 22.0
+offset_right = 1912.0
+offset_bottom = 78.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Level"
+scroll_active = false
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]

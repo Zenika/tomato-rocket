@@ -13,7 +13,7 @@ var ships
 var ships_name
 var rect_ships
 
-var initial_color = Color("000063")
+var initial_color = Color("00002a")
 var selected_color = Color.WEB_GRAY
 
 func _ready():
@@ -24,7 +24,7 @@ func _ready():
 	GlobalState.ships_name = ships_name
 	rect_ships[selected_ship].color = selected_color
 
-func _process(delta):
+func _process(_delta):
 	$Label.text = "[center]Choose your ship with <= or => and press SPACE[/center]"
 	if Input.is_action_just_pressed("move_right"):
 		rect_ships[selected_ship].color = initial_color
