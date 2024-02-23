@@ -8,7 +8,7 @@ var screen_size
 const turning_constante = PI/8
 
 func start(pos):
-	animated_sprite_2D.animation = GlobalState.player.ship_name	
+	animated_sprite_2D.animation = GlobalState.player.ship_name
 	position = pos
 	
 func _ready():

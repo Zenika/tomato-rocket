@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://yndansx0pyom" path="res://resources/assets/effects/thrust_6.png" id="9_yk6cc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivgua"]
-radius = 18.0
-height = 124.0
+radius = 38.0
+height = 88.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2mlpe"]
 animations = [{

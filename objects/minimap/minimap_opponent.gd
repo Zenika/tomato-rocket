@@ -15,13 +15,8 @@ signal on_update_position(position: int)
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-	update_vertical_position(delta)
-
-func update_vertical_position(delta: float):
 	vertical_position += speed * delta
 	on_update_position.emit(position)
 

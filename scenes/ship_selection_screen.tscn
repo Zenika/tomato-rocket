@@ -20,7 +20,7 @@ offset_left = 284.0
 offset_top = 437.0
 offset_right = 484.0
 offset_bottom = 637.0
-color = Color(0, 0, 0.388235, 1)
+color = Color(0, 0, 0.164706, 1)
 
 [node name="Ship2" type="Sprite2D" parent="."]
 z_index = 1
@@ -33,7 +33,7 @@ offset_left = 669.0
 offset_top = 437.0
 offset_right = 869.0
 offset_bottom = 637.0
-color = Color(0, 0, 0.388235, 1)
+color = Color(0, 0, 0.164706, 1)
 
 [node name="Ship3" type="Sprite2D" parent="."]
 z_index = 1
@@ -46,7 +46,7 @@ offset_left = 1052.0
 offset_top = 437.0
 offset_right = 1252.0
 offset_bottom = 637.0
-color = Color(0, 0, 0.388235, 1)
+color = Color(0, 0, 0.164706, 1)
 
 [node name="Ship4" type="Sprite2D" parent="."]
 z_index = 1
@@ -59,7 +59,7 @@ offset_left = 1436.0
 offset_top = 437.0
 offset_right = 1636.0
 offset_bottom = 637.0
-color = Color(0, 0, 0.388235, 1)
+color = Color(0, 0, 0.164706, 1)
 
 [node name="Label" type="RichTextLabel" parent="."]
 offset_left = 4.0

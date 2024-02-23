@@ -1,7 +1,9 @@
 class_name Character
 
+var id
 var avatar
+var avatar_name = ""
 var ship
-@export var ship_name = ""
-@export var ranking_position = 0
-@export var is_player = false
+var ship_name = ""
+var ranking_position = 0
+var is_player = false

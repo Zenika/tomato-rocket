@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7gtyflc5b2o5"]
+[gd_scene load_steps=21 format=3 uid="uid://b7gtyflc5b2o5"]
 
 [ext_resource type="Script" path="res://scenes/race_screen.gd" id="1_lc0uc"]
 [ext_resource type="PackedScene" uid="uid://djfsmn2nrjiuu" path="res://actors/player.tscn" id="2_ig1mj"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://boorheqgs8kja" path="res://actors/finish_line.tscn" id="3_qg17w"]
 [ext_resource type="PackedScene" uid="uid://bw87shy2l27r4" path="res://objects/opponent.tscn" id="4_v4e22"]
 [ext_resource type="PackedScene" uid="uid://cdeub1sx05uh4" path="res://actors/enemy.tscn" id="5_6srgp"]
-[ext_resource type="PackedScene" path="res://actors/boost.tscn" id="6_ife0x"]
+[ext_resource type="PackedScene" uid="uid://mltrbsla6lvm" path="res://actors/boost.tscn" id="6_ife0x"]
 [ext_resource type="AudioStream" uid="uid://dx324yaxvgura" path="res://resources/sounds/boost.wav" id="7_wwbun"]
 [ext_resource type="AudioStream" uid="uid://dvtu3v6cgm8ce" path="res://resources/sounds/boost2.wav" id="8_rupqm"]
 [ext_resource type="AudioStream" uid="uid://cxw0t2m5wkrgu" path="res://resources/sounds/hit.wav" id="9_xbv6c"]
 [ext_resource type="PackedScene" uid="uid://bamw0sls8psxy" path="res://objects/minimap/minimap.tscn" id="10_wl8d1"]
 [ext_resource type="AudioStream" uid="uid://by8nmryiwtl1k" path="res://resources/sounds/win.wav" id="12_2aqrs"]
 [ext_resource type="Texture2D" uid="uid://ccmxfku7gi8et" path="res://resources/assets/flash.png" id="13_rcsgn"]
+[ext_resource type="AudioStream" uid="uid://226hohmewj0q" path="res://resources/sounds/game-over.wav" id="14_6k5xa"]
 
 [sub_resource type="Curve2D" id="Curve2D_xe6ri"]
 _data = {
@@ -57,10 +58,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r22up"]
 bg_color = Color(1, 0, 0, 1)
@@ -69,10 +70,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="RaceScreen" type="Node2D"]
 script = ExtResource("1_lc0uc")
@@ -84,6 +85,7 @@ opponent_scene = ExtResource("4_v4e22")
 position = Vector2(960, 960)
 
 [node name="Player" parent="." instance=ExtResource("2_ig1mj")]
+z_index = 1
 
 [node name="Background" parent="." instance=ExtResource("3_ounkw")]
 
@@ -91,11 +93,15 @@ position = Vector2(960, 960)
 position = Vector2(0, -21)
 
 [node name="Distance" type="RichTextLabel" parent="."]
-visible = false
-offset_left = 39.0
-offset_top = 15.0
-offset_right = 416.0
-offset_bottom = 55.0
+z_index = 9
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 345.0
+offset_bottom = 68.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Distance"
+scroll_active = false
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.52
@@ -135,9 +141,8 @@ stream = ExtResource("8_rupqm")
 stream = ExtResource("9_xbv6c")
 
 [node name="Minimap" parent="." instance=ExtResource("10_wl8d1")]
-adversaires = []
+z_index = 3
 distance_totale = 80000
-position_player = 0
 
 [node name="BoostProgressBar" type="ProgressBar" parent="."]
 z_index = 20
@@ -156,6 +161,7 @@ stream = ExtResource("12_2aqrs")
 [node name="FlashSprite" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.396078)
+z_index = 1
 position = Vector2(994.5, 539.5)
 scale = Vector2(55.8718, 76.4118)
 texture = ExtResource("13_rcsgn")
@@ -167,13 +173,27 @@ one_shot = true
 [node name="HealthProgressBar" type="ProgressBar" parent="."]
 z_index = 50
 offset_left = 888.0
-offset_top = 49.0
+offset_top = 58.0
 offset_right = 1062.0
-offset_bottom = 76.0
+offset_bottom = 85.0
 theme_override_styles/background = SubResource("StyleBoxFlat_sdsij")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r22up")
 value = 100.0
 show_percentage = false
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_6k5xa")
+
+[node name="Level" type="RichTextLabel" parent="."]
+z_index = 9
+offset_left = 1730.0
+offset_top = 22.0
+offset_right = 1912.0
+offset_bottom = 78.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Level"
+scroll_active = false
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
@@ -181,3 +201,4 @@ show_percentage = false
 [connection signal="depasse_adversaire" from="Minimap" to="." method="_on_minimap_depasse_adversaire"]
 [connection signal="finished" from="WinSound" to="." method="_on_win_sound_finished"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
+[connection signal="finished" from="LoseSound" to="." method="_on_lose_sound_finished"]

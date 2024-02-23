@@ -5,7 +5,6 @@ const side_movement = 0.4
 
 var velocity = Vector2.ZERO
 
-
 func _ready():
 	# TODO: choisir le vaisseau
 	velocity.y += 1
